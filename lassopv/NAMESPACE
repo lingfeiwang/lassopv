@@ -1,0 +1,2 @@
+exportPattern("^lassopv$")
+importFrom("lars",lars)
