@@ -1,2 +1,3 @@
 exportPattern("^lassopv$")
 importFrom("lars",lars)
+importFrom("stats","cor","pchisq")
