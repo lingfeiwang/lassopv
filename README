@@ -1,4 +1,4 @@
 This package estimates p-values for predictors x against target variable y in lasso regression, using the regularization strength when each predictor enters the active set of regularization path for the first time as the statistic. This is based on the assumption that predictors that (first) become active earlier tend to be more significant. Null distribution for each predictor is computed analytically under approximation, which aims at efficiency and accuracy for small p-values.
 
 Reference:
-Lingfei Wang and Tom Michoel (In preparation). 2017.
+Lingfei Wang and Tom Michoel, Comparable variable selection in lasso, https://arxiv.org/pdf/1701.07011. 2017.

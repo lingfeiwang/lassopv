@@ -31,7 +31,7 @@ This R package provides a simple and efficient method to estimate the p-value of
 Lingfei Wang <Lingfei.Wang.github@outlook.com>
 }
 \references{
-Lingfei Wang and Tom Michoel. (In preparation). 2017.
+Lingfei Wang and Tom Michoel, Comparable variable selection in lasso, https://arxiv.org/pdf/1701.07011. 2017.
 }
 \keyword{ package }
 \examples{
