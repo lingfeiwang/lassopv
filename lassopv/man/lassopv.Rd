@@ -1,4 +1,4 @@
-% Copyright 2016,2017 Lingfei Wang
+% Copyright 2016-2018 Lingfei Wang
 % 
 % This file is part of lassopv.
 % 
@@ -22,28 +22,38 @@
 Estimation of Nonparametric P-Value Estimation for Predictors in Lasso
 }
 \description{
-This function estimates p-values for predictors x against target variable y in lasso regression, using the regularization strength when each predictor enters the active set of regularization path for the first time as the statistic. This is based on the assumption that predictors that (first) become active earlier tend to be more significant. Null distribution for each predictor is computed analytically under approximation, which aims at efficiency and accuracy for small p-values.
+This function estimates the p-values for predictors x against target variable y in lasso regression, using the regularization strength when each predictor enters the active set of regularization path for the first time as the statistic. This is based on the assumption that predictors (of the same variance) that (first) become active earlier tend to be more significant. Two null distributions are supported: normal and spherical, which are computed separately for each predictor and analytically under approximation, which aims at efficiency and accuracy for small p-values.
 }
 \usage{
-lassopv(x,y,trace = FALSE,normalize=TRUE,Gram,eps = .Machine$double.eps,
+lassopv(x,y,normalize=TRUE,H0=c("spherical","normal"),
 
-max.steps,use.Gram=TRUE,log.p=FALSE,max.predictors=NULL) 
+log.p=FALSE,max.predictors=NULL,trace = FALSE,Gram,
+
+eps = .Machine$double.eps,max.steps,use.Gram=TRUE) 
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{Input matrix of predictor variables.}
   \item{y}{Input vector of target variable.}
-  \item{trace}{Whether traces lasso regression. See lars in package lars.}
   \item{normalize}{Whether every predictor is scaled to unit variance first. Every predictor is forcefully shifted to zero mean regardless of this argument.}
-  \item{Gram}{Optional Gram used by lasso regression in lars.}
-  \item{eps}{Precision for enet function.}
-  \item{max.steps}{The optional maximum number steps for lasso regression. See lars in package lars.}
-  \item{use.Gram}{Whether to use Gram in lasso regression. See lars in package lars.}
+  \item{H0}{The null distribution for each predictor x.
+  
+  Spherical: uniform distribution on n-1 dimensional sphere S^\{n-1\}, so the variance is kept the same as sigma_x^2.
+  
+  Normal: i.i.d N(0,sigma_x^2) in R^n, where sigma_x^2 is the variance of the original predictor x and n is the number of rows in x.}
   \item{log.p}{Whether to output log p-values instead.}
   \item{max.predictors}{The number of top predictors to estimate p-values for. Defaults to all predictors.}
+  \item{trace}{Whether traces lasso regression. See lars in package lars.}
+  \item{Gram}{Optional Gram used by lasso regression in lars.}
+  \item{eps}{Precision for lars function.}
+  \item{max.steps}{The optional maximum number steps for lasso regression. See lars in package lars.}
+  \item{use.Gram}{Whether to use Gram in lasso regression. See lars in package lars.}
 }
 \value{
-Vector of p-values for predictors. Predictors never entered the active set of regularization path within the given max.steps or not within the top (max.predictors) predictors have p-value=1. If log.p is set, outputs log p-values instead.
+Vector of p-values for predictors. Predictors never entered the active set of regularization path within the given max.steps or not within the top (max.predictors) predictors have p-value=1. If log.p is set, output log p-values instead.
+}
+\references{
+Lingfei Wang and Tom Michoel, Comparable variable selection with lasso, https://arxiv.org/pdf/1701.07011. 2017, 2018.
 }
 %\note{}
 

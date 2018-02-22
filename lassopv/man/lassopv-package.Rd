@@ -1,4 +1,4 @@
-% Copyright 2016,2017 Lingfei Wang
+% Copyright 2016-2018 Lingfei Wang
 % 
 % This file is part of lassopv.
 % 
@@ -22,7 +22,7 @@
 Nonparametric P-Value Estimation for Predictors in Lasso
 }
 \description{
-The purpose of this package is to estimate p-values for predictors x against target variable y in lasso regression, using the regularization strength when each predictor enters the active set of regularization path for the first time as the statistic. This is based on the assumption that predictors that (first) become active earlier tend to be more significant. Null distribution for each predictor is computed analytically under approximation, which aims at efficiency and accuracy for small p-values.
+Estimate the p-values for predictors x against target variable y in lasso regression, using the regularization strength when each predictor enters the active set of regularization path for the first time as the statistic. This is based on the assumption that predictors (of the same variance) that (first) become active earlier tend to be more significant. Three null distributions are supported: normal and spherical, which are computed separately for each predictor and analytically under approximation, which aims at efficiency and accuracy for small p-values.
 }
 \details{
 This R package provides a simple and efficient method to estimate the p-value of every predictor on a given target variable. The method is based on lasso regression and compares when every predictor enters the active set of the regulatization path against a normally distributed null predictor. The null distribution is computed analytically under approximation, whose errors are small for significant predictors. The whole computation only requires a single lasso regression over the regularization path, and is capable of analyzing high dimensional datasets.
@@ -31,9 +31,9 @@ This R package provides a simple and efficient method to estimate the p-value of
 Lingfei Wang <Lingfei.Wang.github@outlook.com>
 }
 \references{
-Lingfei Wang and Tom Michoel, Comparable variable selection with lasso, https://arxiv.org/pdf/1701.07011. 2017.
+Lingfei Wang and Tom Michoel, Comparable variable selection with lasso, https://arxiv.org/pdf/1701.07011. 2017, 2018.
 }
-\keyword{ package }
+%\keyword{ package }
 \examples{
 library(lars)
 library(lassopv)

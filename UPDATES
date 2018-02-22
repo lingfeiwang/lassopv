@@ -1,3 +1,7 @@
+0.2.0:
+	Added an additional null distribution: spherical, besides the original normal distribution. This can be set in the new H0 parameter. For details, see reference.
+	Corrected normalize=FALSE cases.
+	Updated calling of lars.
 0.1.3:
 	Correction on reference title...
 0.1.2:
