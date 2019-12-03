@@ -1,14 +1,14 @@
 Package: lassopv
 Type: Package
 Title: Nonparametric P-Value Estimation for Predictors in Lasso
-Version: 0.2.0
-Date: 2018-02-22
+Version: 0.2.1
+Date: 2019-12-03
 Author: Lingfei Wang <Lingfei.Wang.github@outlook.com>
 Maintainer: Lingfei Wang <Lingfei.Wang.github@outlook.com>
 Description: Estimate the p-values for predictors x against target variable y in lasso regression, using the regularization strength when each predictor enters the active set of regularization path for the first time as the statistic. This is based on the assumption that predictors (of the same variance) that (first) become active earlier tend to be more significant. Three null distributions are supported: normal and spherical, which are computed separately for each predictor and analytically under approximation, which aims at efficiency and accuracy for small p-values.
 URL: https://github.com/lingfeiwang/lassopv
 License: GPL-3
-Copyright: Copyright 2016-2018 Lingfei Wang
+Copyright: Copyright 2016-2019 Lingfei Wang
 Depends: R (>= 2.10)
 Imports: lars, stats
 NeedsCompilation: no

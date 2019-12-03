@@ -1,4 +1,4 @@
-# Copyright 2016-2018 Lingfei Wang
+# Copyright 2016-2019 Lingfei Wang
 # 
 # This file is part of lassopv.
 # 
@@ -54,7 +54,12 @@ lassopv<-function (x,y,normalize=TRUE,H0=c("spherical","normal"),log.p=FALSE,max
 		#lambda values
 		lambda=a$lambda[1:nstep,drop=F]/ds
 		#Residue
-		yres=y-predict.lars(a,x,s=a$lambda[1:nstep,drop=F],mode='lambda')$fit
+		ypredict=predict.lars(a,x,s=a$lambda[1:nstep,drop=F],mode='lambda')$fit
+		if(is.null(dim(ypredict)))
+		{
+			ypredict=matrix(ypredict,ncol=1)
+		}
+		yres=y-ypredict
 		#Residue variance
 		pv=t(t(yres)-colMeans(yres))
 		pv=colMeans(pv**2)
@@ -97,12 +102,14 @@ lassopv<-function (x,y,normalize=TRUE,H0=c("spherical","normal"),log.p=FALSE,max
 	if(log.p)
 	{
 		ans[!isdone]=0
+		ans[is.nan(ans)]=-Inf
 		#Account for numerical precision limitations
 		ans[ans>0]=0
 	}
 	else
 	{
 		ans[!isdone]=1
+		ans[is.nan(ans)]=0
 		#Account for numerical precision limitations
 		ans[ans>1]=1
 	}
